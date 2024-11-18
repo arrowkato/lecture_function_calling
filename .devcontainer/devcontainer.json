@@ -1,0 +1,50 @@
+{
+    "name": "uv",
+    "build": {
+        "context": "..",
+        "dockerfile": "Dockerfile"
+    },
+    "features": {},
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "charliermarsh.ruff",
+                "codezombiech.gitignore",
+                "eamodio.gitlens",
+                "exiasr.hadolint",
+                "kevinrose.vsc-python-indent",
+                "mosapride.zenkaku",
+                "ms-azuretools.vscode-docker",
+                "ms-python.python",
+                "njpwerner.autodocstring",
+                "oderwat.indent-rainbow",
+                "pkief.material-icon-theme",
+                "shardulm94.trailing-spaces",
+                "usernamehw.errorlens",
+                "yzhang.markdown-all-in-one",
+                "tamasfe.even-better-toml",
+                "ms-python.vscode-pylance"
+            ],
+            "settings": {
+                "[python]": {
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll.ruff": "explicit",
+                        "source.organizeImports.ruff": "explicit"
+                    },
+                    "editor.formatOnSave": true
+                },
+                "files.insertFinalNewline": true,
+                "files.trimTrailingWhitespace": true,
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.profiles.linux": {
+                    "zsh": {
+                        "path": "/bin/zsh"
+                    }
+                }
+            }
+        }
+    },
+    "postCreateCommand": "uv python pin $(cat .python-version) && uv sync --dev",
+    "remoteUser": "vscode"
+}
