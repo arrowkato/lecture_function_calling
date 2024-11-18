@@ -229,3 +229,4 @@ pyrightconfig.json
 
 .venv
 .mypy_cache
+.env
