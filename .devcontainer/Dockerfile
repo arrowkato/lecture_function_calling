@@ -9,7 +9,7 @@ WORKDIR /opt
 # The installer requires curl (and certificates) to download the release archive
 # hadolint ignore=DL3008
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates curl
+    apt-get install -y --no-install-recommends ca-certificates curl golang
 
 # Run uv installer
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
