@@ -5,9 +5,6 @@ from langchain_core.messages import AIMessage, AnyMessage, HumanMessage, SystemM
 from langchain_google_vertexai import ChatVertexAI
 from langchain_openai import ChatOpenAI
 
-model = ChatAnthropic(model="claude-3-opus-20240229")
-
-
 langchain.debug = True
 load_dotenv()
 
