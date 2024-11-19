@@ -23,7 +23,8 @@
                 "usernamehw.errorlens",
                 "yzhang.markdown-all-in-one",
                 "tamasfe.even-better-toml",
-                "ms-python.vscode-pylance"
+                "ms-python.vscode-pylance",
+                "ms-python.debugpy"
             ],
             "settings": {
                 "[python]": {
