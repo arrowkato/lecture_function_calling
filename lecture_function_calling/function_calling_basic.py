@@ -6,7 +6,6 @@ import json
 
 from langchain_core.messages import AIMessage, AnyMessage, HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
-from pydantic import BaseModel, Field
 
 
 # これは、tool callingで呼び出す用の関数その1
@@ -29,10 +28,6 @@ def multiply(a: float | int, b: float | int) -> int:
         b: Second real number
     """
     return a * b
-
-
-class CalculationResult(BaseModel):
-    result: float = Field(..., description="calculation result")
 
 
 def use_tool_call() -> None:
