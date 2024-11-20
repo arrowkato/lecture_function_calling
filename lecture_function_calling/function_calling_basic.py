@@ -1,5 +1,8 @@
 """よくある四則演算のサンプル。
 https://python.langchain.com/docs/how_to/tool_calling/#pydantic-class
+
+tool callの日本語の解説
+https://zenn.dev/pharmax/articles/1b351b730eef61
 """
 
 from langchain_core.messages import AIMessage, AnyMessage, HumanMessage, SystemMessage
