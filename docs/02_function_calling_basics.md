@@ -11,7 +11,7 @@
 
 講義では、LangChainの場合は、tool callingと呼ぶつもりですが、function callingとtool callingは同じものを指すと思ってください
 
-# 2.2 モチベーション
+# 2.2 概要
 
 > Function callingは、2023年6月にChat Completions APIに追加された機能です。簡単に言えば、 利用可能な関数を LLM に伝えておいて 、LLMに「関数を使いたい」という判断をさせる機能です(LLMが関数を実行するわけではなく、LLM は「関数を使いたい」という応答を返してくるだけです)
 
@@ -24,6 +24,8 @@ LangChainとLangGraphによるRAG_AIエージェント実践入門 より引�
 https://platform.openai.com/docs/guides/function-calling#lifecycle の図を日本語に翻訳
 
 
+# 2.3 詳細
+function_calling_basic.py を動かしてみてください。
 
 # ref
 - https://platform.openai.com/docs/guides/function-calling
