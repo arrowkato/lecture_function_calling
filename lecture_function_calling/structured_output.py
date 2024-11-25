@@ -22,7 +22,7 @@ class CaliculationResult(BaseModel):
     """The result of the calculation"""
 
     result: int = Field(description="The result of the calculation")
-    # 変数の数は2つ上あってもいいです。
+    # 変数の数は2つ以上あってもいいです。
 
 
 def openai_structured_outputs() -> None:
