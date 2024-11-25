@@ -63,7 +63,7 @@ def _show_responses(
 def use_tool_call(question: str) -> None:
     # いつものLLMの定義
     llm = ChatOpenAI(model="gpt-4o", temperature=0.0)
-    # step0使う可能性のある関数(addとmultiply)を登録
+    # step0 使う可能性のある関数(addとmultiply)を登録
     llm_with_tools = llm.bind_tools(tools=[add, multiply])
 
     msgs: list[AnyMessage] = [
@@ -74,18 +74,18 @@ def use_tool_call(question: str) -> None:
     # step1, step2, step3
     # このresponseは、どの関数を使うべきかを返却しています。
     # addとmultiply の実行はまだ、というかLLM自体はコードの実行はできません。
-    response: AIMessage = llm_with_tools.invoke(input=msgs)
+    response_step3: AIMessage = llm_with_tools.invoke(input=msgs)
 
     # responseの中身を見てみる
-    _show_response(response, "step3 result")
+    _show_response(response_step3, "step3 result")
 
     # 後でもう一回使うので、msgsに追加
-    msgs.append(response)
+    msgs.append(response_step3)
 
     _show_responses(msgs, "before step4", delimiter="-")
 
-    # step4
-    for tool_call in response.tool_calls:
+    # step4 アプリケーションは与えられた引数で関数を実行します
+    for tool_call in response_step3.tool_calls:
         selected_tool = {"add": add, "multiply": multiply}[tool_call["name"].lower()]
         tool_msg = selected_tool.invoke(tool_call)  # add or multiplyの実行
         msgs.append(tool_msg)
@@ -93,12 +93,16 @@ def use_tool_call(question: str) -> None:
     # このタイミングで、ブレークポイントを張って、msgsの中身を見てみましょう
     _show_responses(msgs, "after step4", delimiter="-")
 
-    # step5 tool_callを使って、計算した結果を踏まえての最終結果
-    final_response: AIMessage = llm_with_tools.invoke(msgs)
+    # step5 アプリケーションはAPIを呼び出して、プロンプトとコードが実行した結果を渡します。
+    # step6 step5のを踏まえたLLMの応答を受け取ります。
+    # # tool_callを使って、計算した結果を踏まえての最終結果
+    response_step6: AIMessage = llm_with_tools.invoke(msgs)
+    # step7 最終結果をユーザに表示します。
+    # 必ずしもユーザに表示する必要は無いですが、何かしらに使うのが普通の挙動と思います。
     print("=" * 50)
-    print(final_response.content)
+    print(response_step6.content)
 
-    _show_response(response=final_response, prefix="final result detail")
+    _show_response(response=response_step6, prefix="final result detail")
 
 
 if __name__ == "__main__":

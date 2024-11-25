@@ -44,6 +44,34 @@ https://platform.openai.com/docs/guides/function-calling#lifecycle の図を日�
 pngの図が良い人は、[状態遷移](./img/function-calling-diagram-ja.png)を参照してください。
 
 
+function_calling_basics.py きちんと対応させると下記です。
+```mermaid
+sequenceDiagram
+    participant Your_code
+    participant LLM
+
+    activate Your_code
+    Your_code->>Your_code: step0 使う可能性のある関数(addとmutiply)を登録します
+    Your_code->>LLM: step1 あなたのアプリケーションはプロンプトと<br/>LLMが呼び出せる関数の定義を使ってAPIを呼び出します
+    deactivate Your_code
+    activate LLM
+    LLM->>LLM: step2 モデルはユーザに応答するか、<br/>1つ以上の関数を呼び出すかを決定します。
+    LLM->>Your_code: step3 APIは、呼び出す関数とそれを呼び出す引数を指定して、<br/>アプリケーションに応答します。
+    deactivate LLM
+    activate Your_code
+    Your_code->>Your_code: step4 アプリケーションは与えられた引数で<br/>関数を実行します
+    Your_code->>LLM: step5 アプリケーションはAPIを呼び出し、<br/>プロンプトとコードが実行した関数呼び出しの結果を渡します
+    deactivate Your_code
+    activate LLM
+    LLM->>Your_code: step6 最終結果を受け取ります。
+    deactivate LLM
+    Your_code->>Your_code: step6 最終結果(final_response)を受け取ります。
+
+    activate Your_code
+    deactivate Your_code
+```
+
+
 
 # 2.3 詳細
 function_calling_basic.py を動かしてみてください。
