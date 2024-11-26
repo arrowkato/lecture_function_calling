@@ -21,7 +21,7 @@ search_tools.py で
 
 structured_output と WikipediaQueryRunを使って実装してみましょう。
 
-回答はexecise1.pyを参照してください。
+解答はexecise1.pyを参照してください。
 
 
 
