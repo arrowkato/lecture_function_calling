@@ -40,3 +40,6 @@ structured_output と WikipediaQueryRunを使って実装してみましょう�
 解答はexecise2.pyを参照してください。
 
 
+## 5.3 演習2の別解 LangGraphを使った場合
+exercise2-2.py参照です。
+よしなに使い分けていることがわかると思います。
