@@ -1,6 +1,7 @@
-# API keyの指定
+# API key の指定
 
-ChatOpenAIを使うときは、裏でOpenAIのAPIをつかているので、API keyが必要です。
+ChatOpenAI を使うときは、裏で OpenAI の API をつかているので、API key が必要です。
+
 ```python
 from langchain_openai import ChatOpenAI
 
@@ -11,20 +12,29 @@ llm = ChatOpenAI(
 )
 ```
 
-https://github.com/langchain-ai/langchain/blob/a83357dc5ab5fcbed8c2dd7606e9ce763e48d194/libs/partners/openai/langchain_openai/chat_models/base.py#L399 より
-```
+[関連コード](https://github.com/langchain-ai/langchain/blob/a83357dc5ab5fcbed8c2dd7606e9ce763e48d194/libs/partners/openai/langchain_openai/chat_models/base.py#L399) より
+
+```python
 api_key: Optional[str]
   OpenAI API key. If not passed in will be read from env var OPENAI_API_KEY.
 ```
+
 です。
 
-API keyは、秘匿情報なので、ソースコードには書かないようにしてください。
-毎度、shellで、export OPENAI_API_KEY=sk-1234567890abcdef1234567890abcdef などとして、API keyを環境変数にセットするのも手間なので、[python-dotenv](https://pypi.org/project/python-dotenv/)を使うと楽です。
+API key は、秘匿情報なので、ソースコードには書かないようにしてください。
+毎度、shell で、`export OPENAI_API_KEY=sk-1234567890abcdef1234567890abcdef` などとして、API key を環境変数にセットするのも手間です。[python-dotenv](https://pypi.org/project/python-dotenv/)を使うと楽です。
+
+---
 
 # .env ファイルの読み込み
+
+python-dotenv のインストール
+
 ```shell
 pip install python-dotenv
 ```
+
+使い方
 
 ```python
 from dotenv import load_dotenv
