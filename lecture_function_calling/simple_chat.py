@@ -1,11 +1,9 @@
-import langchain
 from dotenv import load_dotenv
 from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import AIMessage, AnyMessage, HumanMessage, SystemMessage
 from langchain_google_vertexai import ChatVertexAI
 from langchain_openai import ChatOpenAI
 
-langchain.debug = True
 load_dotenv()
 
 
@@ -19,8 +17,30 @@ def chat_openai(messages: list[AnyMessage]) -> None:
         max_tokens=200,
     )
     ai_message: AIMessage = llm.invoke(input=messages)
-    print(ai_message)
-    print(ai_message.content)
+    print(ai_message)  # AIMessageのメッセージ全体
+    print(ai_message.content)  # LLMからの返答テキストは、contentに入っています。
+
+
+def chat_openai_multi(messages: list[AnyMessage]) -> None:
+    """ユーザーとLLMとのチャットを複数回やり取りする場合
+
+    Args:
+        messages (list[AnyMessage]): SystemMessage, HumanMessage, AIMessageが入りうるリスト
+    """
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.5)
+    ai_message: AIMessage = llm.invoke(input=messages)
+    print(ai_message.content)  # LLMからの返答その1
+
+    # チャットシステムを作る場合は、以下のようにmessageをつなげてLLMに投げてください
+    messages.append(ai_message)
+    # ここではベタ打ちですが、chatシステムを作る場合は、ユーザーからの入力を受け取ります。
+    messages.append(
+        HumanMessage(
+            content="私の好きなものを使って、今日の晩御飯のレシピを考えてください。"
+        )
+    )
+    response = llm.invoke(messages)  # LLMに投げる
+    print(response.content)  # LLMからの返答その2
 
 
 def chat_anthropic(messages: list[AnyMessage]) -> None:
@@ -54,12 +74,14 @@ def chat_gemini(messages: list[AnyMessage]) -> None:
 
 def main() -> None:
     system_msg = SystemMessage(content="あなたは親切なチャットアシスタントです。")
-    human_msg = HumanMessage(content="こんにちは")
+    human_msg = HumanMessage(content="こんにちは、私はめふんの塩漬けが好きです")
     msgs = [system_msg, human_msg]
 
-    chat_openai(msgs)
-    chat_anthropic(msgs)
-    chat_gemini(msgs)
+    # 一番シンプルなチャット
+    chat_openai(msgs)  # .env 内の OPENAI_API_KEY にAPIキーを指定していること
+    chat_anthropic(msgs)  # .env 内の ANTHROPIC_API_KEY にAPIキーを指定していること
+    chat_gemini(msgs)  # Google Cloudに認証していること
+    chat_openai_multi(msgs)
 
 
 if __name__ == "__main__":
