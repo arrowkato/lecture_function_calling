@@ -3,9 +3,10 @@
 https://python.langchain.com/docs/how_to/structured_output/
 
 Q. 5 + 12 はいくつ
-A. 5 + 7 = 12 です。
+A. 5 + 12 = 17 です。
 
-ほしいのは、 12 だけというときに、with_structured_output() を使うと、良いです。
+
+特に指定しない場合、LLMの返答は文になることが多いです。返答としてほしいのは、 `17` だけなど返答形式が決まっている場合は、with_structured_output() を使うと良いです。
 
 
 ## 4.1 pydantic
