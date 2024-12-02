@@ -146,13 +146,29 @@ const response = await openai.chat.completions.create({
 
 ## 1.3. 各種パラメタ
 
-[OpenAI の chat completion API](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature)
+[OpenAI の chat completion API](https://platform.openai.com/docs/api-reference/chat/create)
 
-### 1.3.1 temperature
+
+### 1.3.1 model
+[モデル名](https://platform.openai.com/docs/api-reference/chat/create#chat-create-model) です。
+
+各社、高性能高価格モデルとそこそこ性能低価格モデルの2種類を提供していることが多いです。
+OpenAIの場合は、下記です。
+- 高性能高価格モデル: GPT-4o, o1-mini
+- そこそこ性能低価格モデル: GPT-4o-mini
+
+o1-preview は、名前の通り preview 版なので、今回の分類に入れていません。
+
+モデル名は、下記を参照してください。
+- [OpenAIのモデル名一覧](https://platform.openai.com/docs/models#models-overview)
+- [Anthropicのモデル名一覧](https://docs.anthropic.com/en/docs/about-claude/models#model-names)
+- [Geminiのモデル名一覧](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models)
+
+### 1.3.2 temperature
 
 [temperature](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature)
 
 使用するサンプリング温度は 0 から 2 までです。0.8 などの高い値を指定すると出力はよりランダムになり、0.2 などの低い値を指定すると出力はより集中的かつ決定論的になります。
-通常は、`top_p` どちらか一方を変更することをお勧めしますが、両方を変更することはお勧めしません。
+通常は、`top_p` どちらか一方を変更し、両方を変更することは推奨されていません。
 
 default: 1.0 なので、結構ランダム性が高い値です。
