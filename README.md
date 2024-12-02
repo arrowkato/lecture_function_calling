@@ -56,8 +56,13 @@ cp .env.sample .env
 ```bash
 # <PROJECT_ID> は、Google Cloud Platform のプロジェクトIDに置き換えてください。
 export CLOUDSDK_CORE_PROJECT=<PROJECT_ID>
+# 利用するGoogle Cloudのプロジェクトを指定してください
+gcloud config set project <PROJECT_ID>
 # コマンドを打つと、URLが出てくるので、認証して、パスワードっぽい長い文字列をコピペしてください
 gcloud auth application-default login
+
+# 上記で認証できていなければ下記のコマンドも試してください
+gcloud auth application-default set-quota-project <PROJECT_ID>
 ```
 
 ## 2.3 Tavily
