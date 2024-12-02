@@ -71,3 +71,15 @@ gcloud auth application-default login
 
 
 Free プランなら、 1,000 API credits / month まで無料です。https://tavily.com/ より
+
+
+# 3. このリポジトリで説明しないこと
+
+Function Calling の説明をメインにしていますので、LangChain Expression Language(LCEL)の説明は省いています。
+LCEL を使ったほうが、簡潔に書ける箇所もありますが、最低限の知識で Function Calling を使えるような構成にしています。
+
+きちんと勉強したい人は、以下を参照してください。
+- [LangChain 公式Doc](https://python.langchain.com/docs/concepts/lcel/)
+- [LangChainとLangGraphによるRAG・AIエージェント［実践］入門 エンジニア選書](https://www.amazon.co.jp/dp/B0DK4YGYBL/)
+- [つくりながら学ぶ！生成AIアプリ＆エージェント開発入門](https://www.amazon.co.jp/dp/B0D6VWX1T8)
+
