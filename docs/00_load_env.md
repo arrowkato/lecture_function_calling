@@ -1,4 +1,5 @@
-# API key の指定
+# 0. OpenAI等のAPIキーの設定方法
+## 0.1 API key の指定
 
 ChatOpenAI を使うときは、裏で OpenAI の API をつかているので、API key が必要です。
 
@@ -26,13 +27,13 @@ API key は、秘匿情報なので、ソースコードには書かないよう
 
 ---
 
-# .env ファイルの読み込み
+# 0.2 .env ファイルの読み込み
 
-python-dotenv のインストール
-
+python-dotenv のインストール。
 ```shell
 pip install python-dotenv
 ```
+`uv sync --dev` を使っている場合は、すでにインストール済みです。
 
 使い方
 
