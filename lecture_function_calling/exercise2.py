@@ -110,7 +110,7 @@ def extract_keywords(model_name: str, user_input: str) -> str:
 
 def _main(user_input: str):
     # GPT-4o-2024-11-20の学習データのcut offについては、https://platform.openai.com/docs/models#gpt-4o 参照
-    model_name = "gpt-4o-2024-11-20"
+    model_name = "gpt-4o-2024-11-20"  # 2023-11 以降は学習データに含まれない
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     msgs = [
