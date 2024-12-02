@@ -3,6 +3,12 @@
 LLM 的 Hello World。
 普通に Chat するだけです。
 
+
+OpenAI の playground で同じ挙動をするものは下記になります。
+
+![chat_sample](img/chat_sample.png)
+
+
 ## 1.1 LangChain のメリット
 
 LangChain を使えば、異なるベンダーの API を使っても、同じように Chat することができます。
