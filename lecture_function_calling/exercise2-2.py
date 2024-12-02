@@ -9,7 +9,7 @@ from langgraph.prebuilt import create_react_agent
 
 
 @tool
-def add(a: float | int, b: float | int) -> int:
+def add(a: float | int, b: float | int) -> float:
     """Add two real number.
 
     Args:
