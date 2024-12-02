@@ -13,8 +13,8 @@ def chat_openai(messages: list[AnyMessage]) -> None:
         model="gpt-4o-mini",
         # 0.2だと正しいけれども多様性が少なめ、0.5はバランスが良い、0.9だと多様性が高いけれども誤りが出てくる と言われています。
         temperature=0.5,
-        # 出力時の最大トークン数。大体 *0.7倍した数値が出力日本語の文字数です。この場合、140文字くらい
-        max_tokens=200,
+        # 出力時の最大トークン数。大体 *0.7倍した数値が出力日本語の文字数です。この場合、1400文字くらい
+        max_tokens=2000,
     )
     ai_message: AIMessage = llm.invoke(input=messages)
     print(ai_message)  # AIMessageのメッセージ全体
@@ -49,8 +49,8 @@ def chat_anthropic(messages: list[AnyMessage]) -> None:
         model="claude-3-5-haiku-20241022",
         # https://docs.anthropic.com/en/docs/resources/glossary#temperature
         temperature=0.5,
-        # 出力時の最大トークン数。多分 *0.7倍した数値が出力日本語の文字数です。この場合、140文字くらい
-        max_tokens_to_sample=200,
+        # 出力時の最大トークン数。多分 *0.7倍した数値が出力日本語の文字数です。この場合、1400文字くらい
+        max_tokens_to_sample=2000,
     )
     ai_message: AIMessage = llm.invoke(input=messages)
     print(ai_message)
@@ -65,7 +65,7 @@ def chat_gemini(messages: list[AnyMessage]) -> None:
         temperature=0.5,
         # https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/adjust-parameter-values#max-output-tokens
         # 1word=4token とあるが、おそらく英語の場合
-        max_tokens=200,
+        max_tokens=2000,
     )
     ai_message: AIMessage = llm.invoke(input=messages)
     print(ai_message)
@@ -78,6 +78,7 @@ def main() -> None:
     msgs = [system_msg, human_msg]
 
     # 一番シンプルなチャット
+    chat_openai([human_msg])  # HumanMessageのみ渡した場合
     chat_openai(msgs)  # .env 内の OPENAI_API_KEY にAPIキーを指定していること
     chat_anthropic(msgs)  # .env 内の ANTHROPIC_API_KEY にAPIキーを指定していること
     chat_gemini(msgs)  # Google Cloudに認証していること
