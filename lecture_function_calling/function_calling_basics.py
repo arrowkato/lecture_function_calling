@@ -15,7 +15,7 @@ from langchain_openai import ChatOpenAI
 # これは、tool callingで呼び出す用の関数その1
 # 関数名、引数、返り値、docstring を参照して、LLMがこの関数を使うべきかを決めるので、きちんと書くこと
 @tool
-def add(a: float | int, b: float | int) -> int:
+def add(a: float | int, b: float | int) -> float:
     """Add two real number.
 
     Args:
@@ -28,7 +28,7 @@ def add(a: float | int, b: float | int) -> int:
 # これは、tool callingで呼び出す用の関数その2
 # 関数名、引数、返り値、docstring を参照して、LLMがこの関数を使うべきかを決めるので、きちんと書くこと
 @tool
-def multiply(a: float | int, b: float | int) -> int:
+def multiply(a: float | int, b: float | int) -> float:
     """Multiply two real number.
 
     Args:
