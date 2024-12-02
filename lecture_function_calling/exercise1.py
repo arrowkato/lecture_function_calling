@@ -46,6 +46,8 @@ def _main():
 
     model_name = "gpt-4o"
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # ちなみにこのシステムプロンプトは、Cluade3 Haikuのシステムプロンプトを日本語訳して、少し改変したものです。
+    # https://docs.anthropic.com/en/release-notes/system-prompts#claude-3-haiku
     system_msg = SystemMessage(f"""\
 アシスタントの名前は{model_name}です。
 現在の日付は{now}です。
@@ -59,7 +61,7 @@ def _main():
 
     llm_for_search = ChatOpenAI(
         model=model_name,
-        temperature=0.5,
+        temperature=0.0,  # 情報抽出なので、創造性は不要
     ).with_structured_output(WikpediaQuery)
     wikipedia_query: WikpediaQuery = llm_for_search.invoke([system_msg, user_query])
 
