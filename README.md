@@ -1,4 +1,3 @@
-
 # 1. 環境構築
 
 ## 1.1 VS Code + devcontainer を使う場合
@@ -8,9 +7,9 @@ VS Codeを使う場合は、[Dev Containers](https://marketplace.visualstudio.co
 
 ## 1.2 VS Code + devcontainer を使わない場合
 ### 1.2.1 コンテナを使う場合
-[Docker in IntelliJ IDEA](https://www.jetbrains.com/help/idea/docker.html) を使う場合は、Dockerfile に以下のように記述してください。
-
+[Docker in IntelliJ IDEA](https://www.jetbrains.com/help/idea/docker.html) を使う場合は、Dockerfile は
 .devcontainer/Dockerfile をビルドして使ってください。
+
 
 
 **このリポジトリで使うライブラリのインストール**  
@@ -27,7 +26,7 @@ uv sync --dev
 **pythonのインストール**  
 uv はパッケージマネージャーですが、pythonをインストールもできます。
 
-多分pythonのバージョンは3.9以降なら動きますが、動作確認をしているのが3.12.6なので、このバージョンをインストールしてください。
+pythonのバージョンは3.9以降なら動きますが、動作確認をしているのが 3.12.6 なので、このバージョンをインストールしてください。
 すでにインストール済みの場合、この手順は不要です。
 ```bash
 uv python install $(cat .python-version)
@@ -38,7 +37,7 @@ uv python install $(cat .python-version)
 uv sync --dev
 ```
 
-リポジトリ直下に`.venv` directoryができていればOKです。
+リポジトリ直下に `.venv` directoryができていればOKです。
 
 
 
