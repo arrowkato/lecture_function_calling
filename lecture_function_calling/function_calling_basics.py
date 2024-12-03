@@ -106,7 +106,7 @@ def use_tool_call(question: str) -> None:
 
 
 if __name__ == "__main__":
-    question1 = "929801.2 * 380.29  はいくつですか。"  # 353594098.348  桁数の少ない四則演算だとLLMは普通に答えるので
-    question2 = "390.32 + 84.41 はいくつですか。"
+    question1 = "13904.32 + 484.41 はいくつですか。"  # 14388.73 桁数の少ない四則演算だとLLMは普通に答えるので
+    # question2 = "929801.2 * 380.29  はいくつですか。"  # 353594098.348  桁数の少ない四則演算だとLLMは普通に答えるので
     use_tool_call(question=question1)
     # use_tool_call(question=question2)
