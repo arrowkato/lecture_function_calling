@@ -72,7 +72,7 @@ sequenceDiagram
     deactivate Your_code
 ```
 
-# 2.4 実行
+## 2.4 実行
 
 function_calling_basics.py を動かしてみてください。
 ブレークポイントを貼りながら、LLM の返答を確認してみると理解が深まりやすいと思います。
