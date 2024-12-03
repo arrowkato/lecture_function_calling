@@ -1,6 +1,6 @@
 # 2. function calling の基本
 
-# 2.1 用語
+## 2.1 用語
 
 - OpenAI: [function calling](https://platform.openai.com/docs/guides/function-calling)
 - Anthropic: [tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use)
@@ -11,7 +11,7 @@
 
 講義では、LangChain の場合は、tool calling と呼ぶつもりですが、function calling と tool calling は同じものを指すと思ってください
 
-# 2.2 function calling の概要
+## 2.2 function calling の概要
 
 > Function calling は、2023 年 6 月に Chat Completions API に追加された機能です。簡単に言えば、 利用可能な関数を LLM に伝えておいて 、LLM に「関数を使いたい」という判断をさせる機能です(LLM が関数を実行するわけではなく、LLM は「関数を使いたい」という応答を返してくるだけです)
 
