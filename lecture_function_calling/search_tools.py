@@ -1,8 +1,3 @@
-"""
-langchain組み込みのtoolsなので、脳死で使えます。
-性能というか使い勝手は、ピンキリ
-"""
-
 from dotenv import load_dotenv
 from langchain_community.tools import (
     DuckDuckGoSearchResults,
@@ -48,19 +43,18 @@ def wikipedia_search(query: str) -> None:
     )
     wikipedia = WikipediaQueryRun(api_wrapper=wrapper)
 
-    response = wikipedia.invoke(query)
+    response: str = wikipedia.invoke(query)
     print(response)
 
 
 def tavily_search(query: str) -> None:
     """tavilyを使った検索
 
-    API自体が賢いので、変にキーワード抽出をしなくても検索してくれる
     Args:
         query (str): クエリ
     """
     search = TavilySearchResults(
-        max_results=5,
+        max_results=3,
         search_depth="advanced",
         # include_answer=True,
         # include_raw_content=True,
@@ -71,14 +65,12 @@ def tavily_search(query: str) -> None:
         # description="...",     # overwrite default tool description
         # args_schema=...,       # overwrite default args_schema: BaseModel
     )
-    result = search.invoke(query)
+    result: list[dict] = search.invoke(input={"query": query})
     print(result)
 
 
 if __name__ == "__main__":
-    # query = "核融合"
     query = "総理大臣ってだれ?"
-    # query = "総理大臣"
     # duckduckgo_search_in_english("What is LLM in the context of machine learning?")
     # duckduckgo_search_in_japanese()
     # wikipedia_search(query)
