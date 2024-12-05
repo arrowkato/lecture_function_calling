@@ -146,6 +146,6 @@ def _main(user_input: str):
 
 
 if __name__ == "__main__":
-    _main(user_input="日本の初代総理大臣は?")  #
-    _main(user_input="今の総理大臣ってだれ?")
-    _main(user_input="今日の晩ごはん献立を考えてください。")
+    _main(user_input="いまの総理大臣ってだれ?")  # 検索必要
+    # _main(user_input="日本の初代総理大臣は?")  # 検索不要
+    # _main(user_input="今日の晩ごはんの献立を考えてください。")  # 検索不要
