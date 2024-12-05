@@ -61,12 +61,11 @@ def use_tool_call(question: str) -> None:
 
 
 if __name__ == "__main__":
-    # question = "929801.2 * 380.29  はいくつですか。"  # 353594098.348  桁数の少ない四則演算だとLLMは普通に答えるので
-    question = "390.32 + 84.41 はいくつですか。"
-    question = "今日の晩御飯の献立を考えて"
+    # question = "390.32 + 84.41 はいくつですか。"
+    # question = "今日の晩御飯の献立を考えて"
 
     # 注:量子非隠蔽定理 の日本語記事は2024年にできており、gpt-4o-miniのcut offの2023年10月よりもあとの情報です。
-    question = "量子非隠蔽定理についてwikipediaで調べて、小学生にもわかるように説明して"
+    question = "量子非隠蔽定理について、小学生にもわかるように説明して"
 
-    question = "いまの総理大臣ってだれ?"
+    # question = "いまの総理大臣ってだれ?"
     use_tool_call(question=question)
