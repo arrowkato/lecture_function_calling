@@ -70,7 +70,7 @@ def tavily_search(query: str) -> None:
 
 
 if __name__ == "__main__":
-    query = "総理大臣ってだれ?"
+    query = "いまの総理大臣ってだれ?"
     # duckduckgo_search_in_english("What is LLM in the context of machine learning?")
     # duckduckgo_search_in_japanese()
     # wikipedia_search(query)
