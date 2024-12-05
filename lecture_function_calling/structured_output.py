@@ -18,7 +18,7 @@ load_dotenv()
 
 
 # Pydantic
-class CaliculationResult(BaseModel):
+class CalculationResult(BaseModel):
     """The result of the calculation"""
 
     result: int = Field(description="The result of the calculation")
@@ -26,39 +26,39 @@ class CaliculationResult(BaseModel):
 
 
 def openai_structured_outputs() -> None:
-    llm = ChatOpenAI(model="gpt-4o").with_structured_output(CaliculationResult)
+    llm = ChatOpenAI(model="gpt-4o").with_structured_output(CalculationResult)
 
     human_msg = HumanMessage("3掛ける12引く5は?")
-    response: CaliculationResult = llm.invoke([human_msg])
+    response: CalculationResult = llm.invoke([human_msg])
     # response自体が、 CaliculationResult なので、そこに定義したもののみ返却される
     print(response.result)
 
 
 def anthropic_structured_outputs() -> None:
     llm = ChatAnthropic(model="claude-3-5-sonnet-20241022").with_structured_output(
-        schema=CaliculationResult
+        schema=CalculationResult
     )
 
     human_msg = HumanMessage("3掛ける12引く5は?")
 
-    response: CaliculationResult = llm.invoke([human_msg])
+    response: CalculationResult = llm.invoke([human_msg])
     # response自体が、 CaliculationResult なので、そこに定義したもののみ返却される
     print(response.result)
 
 
 def gemini_structured_outputs() -> None:
     llm = ChatVertexAI(model="gemini-1.5-pro-002").with_structured_output(
-        schema=CaliculationResult
+        schema=CalculationResult
     )
 
     human_msg = HumanMessage("3掛ける12引く5は?")
 
-    response: CaliculationResult = llm.invoke([human_msg])
+    response: CalculationResult = llm.invoke([human_msg])
     # response自体が、 CaliculationResult なので、そこに定義したもののみ返却される
     print(response.result)
 
 
 if __name__ == "__main__":
-    # openai_structured_outputs()
+    openai_structured_outputs()
     # anthropic_structured_outputs()
-    gemini_structured_outputs()
+    # gemini_structured_outputs()
