@@ -142,7 +142,6 @@ def _main(user_input: str):
     )
 
     ai_message: AIMessage = llm.invoke(msgs)
-    # print(ai_message)
     print(ai_message.content)
 
 

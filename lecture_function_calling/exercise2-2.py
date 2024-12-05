@@ -67,4 +67,6 @@ if __name__ == "__main__":
 
     # 注:量子非隠蔽定理 の日本語記事は2024年にできており、gpt-4o-miniのcut offの2023年10月よりもあとの情報です。
     question = "量子非隠蔽定理についてwikipediaで調べて、小学生にもわかるように説明して"
+
+    question = "いまの総理大臣ってだれ?"
     use_tool_call(question=question)
