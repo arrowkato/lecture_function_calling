@@ -42,7 +42,7 @@ def wikipedia_search(query: str) -> str:
 
 
 def _main():
-    user_query = "総理大臣ってだれ?"
+    user_query = "いまの総理大臣ってだれ?"
 
     model_name = "gpt-4o"
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -85,7 +85,6 @@ def _main():
             HumanMessage(content=user_query),
         ]
     )
-    # print(ai_message)
     print(ai_message.content)
 
 
